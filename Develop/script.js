@@ -1,6 +1,8 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+var result = ''
+
 // possible password values
 
 var values = {
@@ -31,12 +33,16 @@ function generatePassword() {
 
   var characterLower = window.confirm("Include Lowercase?");
 
+  var characterUpper = window.confirm("Include Uppercase?");
 
-  var result = ''
+  var characterNumber = window.confirm("Include Numbers?");
 
-  if (userChoise && characterLower == true) {
-    
-    for (var i = 0; i < userChoise; i++) {
+  var characterSpecial = window.confirm("Include Special Characters");
+
+
+  for (var i = 0; i < userChoise; i++) {
+
+    if (characterLower) {
 
       var mathLower = Math.floor(Math.random() * values.lower.length);
 
@@ -45,25 +51,45 @@ function generatePassword() {
       result += randomLower;
     }
 
-    return result;
+    if (characterUpper) {
+
+      var mathUpper = Math.floor(Math.random() * values.upper.length);
+
+      var randomUpper = values.upper[mathUpper];
+
+      result += randomUpper;
+
+    }
+
+    if (characterNumber) {
+
+      var mathNumber = Math.floor(Math.random() * values.number.length);
+
+      var randomNumber = values.number[mathNumber];
+
+      result += randomNumber;
+
+    }
+
+    if (characterSpecial) {
+
+      var mathSpecial = Math.floor(Math.random() * values.special.length);
+
+      var randomSpecial = values.special[mathSpecial];
+
+      result += randomSpecial;
+
+    }
 
   }
+
+  // returns the users selected values as a string for the character limit they input
+
+  return result.slice(0, userChoise);
 
 
 
 }
-
-
-
-// var characterUpper = window.confirm("Include Uppercase?");
-
-// var characternum = window.confirm("Include Numbers?");
-
-// var characterSpecial = window.confirm("Include Special Characters");
-
-
-
-
 
 
 // Write password to the #password input
