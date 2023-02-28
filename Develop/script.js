@@ -31,6 +31,8 @@ function generatePassword() {
     return "Retry: Your input must be between 8 & 128 characters";
   }
 
+  // allows user to select which characters to include
+  
   var characterLower = window.confirm("Include Lowercase?");
 
   var characterUpper = window.confirm("Include Uppercase?");
@@ -40,8 +42,12 @@ function generatePassword() {
   var characterSpecial = window.confirm("Include Special Characters");
 
 
+  // runs a for loop for the number that the user selected for a password length
+  
   for (var i = 0; i < userChoise; i++) {
 
+    // includes the selected charcters in the for loop and adds the values to in array in var result
+    
     if (characterLower) {
 
       var mathLower = Math.floor(Math.random() * values.lower.length);
@@ -83,7 +89,7 @@ function generatePassword() {
 
   }
 
-  // returns the users selected values as a string for the character limit they input
+  // returns the array values of var result and limits it to the length of the users selected password length
 
   return result.slice(0, userChoise);
 
